@@ -39,9 +39,10 @@ if ($info_field == null) {
 	$select = "deleted = 0 AND suspended = 0 AND username <> 'guest'";
 	$amount_of_users = $DB->count_records_select(USER_TABLE_NAME, $select);
 	$amount_of_chatbot_users = $DB->count_records(USER_INFO_DATA_TABLE_NAME, array ('fieldid'=>$info_field->id, 'data'=>'1'));
+	$amount_of_non_chatbot_users = $amount_of_users - $amount_of_chatbot_users;
 
 	if (class_exists('core\chart_pie')) {		
-		$data = new core\chart_series(get_string('lb_chart_series', 'report_fbnotifier_stats'), [$amount_of_chatbot_users, ($amount_of_users - $amount_of_chatbot_users)]);
+		$data = new core\chart_series(get_string('lb_chart_series', 'report_fbnotifier_stats'), [$amount_of_chatbot_users, $amount_of_non_chatbot_users]);
 		$chart = new core\chart_pie();
 		$chart->add_series($data); 
 		$chart->set_labels([get_string('lb_amount_of_chatbotusers', 'report_fbnotifier_stats'), get_string('lb_amount_of_non_chatbot_users', 'report_fbnotifier_stats')]);
@@ -51,15 +52,17 @@ if ($info_field == null) {
 	$table = new html_table();
 	
 	$table->head = array(get_string('lb_amount_of_users', 'report_fbnotifier_stats'), get_string('lb_amount_of_chatbotusers', 'report_fbnotifier_stats'), 
-		get_string('lb_percentage_of_chatbotusers', 'report_fbnotifier_stats'));
+		get_string('lb_amount_of_non_chatbot_users', 'report_fbnotifier_stats'));
 	
 	if ($amount_of_users > 0) {
 		$table->data = array(
-			array($amount_of_users, $amount_of_chatbot_users, number_format(($amount_of_chatbot_users / $amount_of_users) * 100, 2) . '%')
+			array($amount_of_users, 
+				$amount_of_chatbot_users . " (" . number_format(($amount_of_chatbot_users / $amount_of_users) * 100, 2) . '%)', 
+				$amount_of_non_chatbot_users . " (" . number_format(($amount_of_non_chatbot_users / $amount_of_users) * 100, 2) . '%)')
 		);
 	} else {
 		$table->data = array(
-			array($amount_of_users, $amount_of_chatbot_users, 0)
+			array("", "", "")
 		);
 	}
 	
