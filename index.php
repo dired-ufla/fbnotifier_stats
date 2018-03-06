@@ -36,7 +36,7 @@ $info_field = $DB->get_record(USER_INFO_FIELD_TABLE_NAME, array ('shortname'=>'u
 if ($info_field == null) {
 	echo '<p><b>' . get_string('msg_no_field_error', 'report_fbnotifier_stats') . '</b></p>';
 } else {
-	$amount_of_users = $DB->count_records(USER_INFO_DATA_TABLE_NAME, array ('fieldid'=>$info_field->id));
+	$amount_of_users = $DB->count_records(USER_TABLE_NAME) - 1; // -1 because of guest user.
 	$amount_of_chatbot_users = $DB->count_records(USER_INFO_DATA_TABLE_NAME, array ('fieldid'=>$info_field->id, 'data'=>'1'));
 
 	if (class_exists('core\chart_pie')) {		

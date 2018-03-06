@@ -23,7 +23,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Estatísticas sobre chatbot';
+$string['pluginname'] = 'Estatísticas sobre o chatbot';
 $string['lb_amount_of_users'] = 'Quantidade de usuários';
 $string['lb_amount_of_chatbotusers'] = 'Quantidade de usuários do chatbot';
 $string['lb_amount_of_non_chatbot_users'] = 'Demais usuários';

@@ -25,5 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+define('USER_TABLE_NAME', 'user');
 define('USER_INFO_FIELD_TABLE_NAME', 'user_info_field');
 define('USER_INFO_DATA_TABLE_NAME', 'user_info_data');
