@@ -1,2 +1,2 @@
-# fbnotifier_stats
-This plugin shows statistics about the usage of the chatbot by the users.
+# feedbackstats
+That is a report plugin that helps the admin to known how the feedback activities are being used by users.
