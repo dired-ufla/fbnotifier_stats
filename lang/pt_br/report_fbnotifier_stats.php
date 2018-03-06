@@ -26,4 +26,7 @@
 $string['pluginname'] = 'Estatísticas sobre chatbot';
 $string['lb_amount_of_users'] = 'Quantidade de usuários';
 $string['lb_amount_of_chatbotusers'] = 'Quantidade de usuários do chatbot';
+$string['lb_amount_of_non_chatbot_users'] = 'Demais usuários';
 $string['lb_percentage_of_chatbotusers'] = '% de usuários do chatbot';
+$string['msg_no_field_error'] = 'O campo de perfil de usuários denominado "usageconditions" não existe. Por favor, verifique a configuração do plugin "FBNotifier"!';
+$string['lb_chart_series'] = 'Usuário do chatbot';
